@@ -2,10 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0feffd15-d884-4264-b1cf-95413e7afdd2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/bin/nodemon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/bin/postinstall.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/commitlint.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/cli/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/cli/parse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/config/command.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/config/defaults.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/config/exec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/config/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/config/load.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/help/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/monitor/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/monitor/match.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/monitor/run.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/monitor/signals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/monitor/watch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/nodemon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/rules/add.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/rules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/rules/parse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/spawn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/utils/bus.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/utils/clone.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/utils/colour.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/utils/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/utils/log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/utils/merge.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/lib/version.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/nodemon/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +88,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573449398973</updated>
-      <workItem from="1573449401143" duration="4959000" />
+      <workItem from="1573449401143" duration="5372000" />
     </task>
     <servers />
   </component>
