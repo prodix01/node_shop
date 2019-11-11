@@ -1,6 +1,7 @@
 
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 
 const productRoutes = require("./routes/api/products");
 const ordersRoutes = require("./routes/api/orders");
@@ -11,6 +12,10 @@ const usersRoutes = require("./routes/api/users");
 //         "msg":"server responsed"
 //    })
 // });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+
 
 app.use("/product", productRoutes);
 app.use("/orders", ordersRoutes);

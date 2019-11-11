@@ -7,12 +7,23 @@ router.get("/test", (req, res) => {
         "msg":"제품 불러옴"
     })
 });
+
+
 // 제품 등록하기
 router.post("/register", (req, res) => {
+
+    const product = {
+        email : req.body.email,
+        password : req.body.password
+    };
+
     res.json({
-        "msg" : "제품 등록됨"
+        msg : "제품 등록됨",
+        userinfo: product
     })
 });
+
+
 
 // 제품 수정하기
 router.patch("/update", (req, res) => {
