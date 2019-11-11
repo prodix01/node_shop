@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/prodix01/node_shop/issues"
   },
-  "homepage": "https://github.com/prodix01/node_shop#readme"
+  "homepage": "https://github.com/prodix01/node_shop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
