@@ -3,6 +3,8 @@ const router = express.Router();
 const productModel = require("../../models/products");
 
 
+// Data CRUD
+
 
 // 제품 불러오기
 router.get("/", (req, res) => {
@@ -16,17 +18,46 @@ router.get("/", (req, res) => {
                 msg : "successful total products",
                 count : docs.length,
                 productInfo : docs
-            })
+            });
         })
         .catch(err => {
             res.status(500).json({
                 error : err.message
-            })
+            });
         });
 
 
 });
 
+
+//상세제품 불러오기
+router.get("/:product_id", (req, res) => {
+
+    const id = req.params.product_id;
+    productModel
+        .findById(id)
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            if(doc) {
+                return res.status(200).json({
+                    msg : "successful get product",
+                    productInfo : doc
+                });
+            }
+            else {
+                res.status(404).json({
+                    msg : "No product"
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                error : err.message
+            });
+        });
+
+});
 
 
 
@@ -74,10 +105,26 @@ router.patch("/update", (req, res) => {
 
 
 //제품 삭제하기
-router.delete("/delete", (req, res) => {
-    res.json({
-        "msg" : "제품 삭제됨"
-    })
+router.delete("/:product_id", (req, res) => {
+
+    const id = req.params.product_id;
+    productModel
+        .remove({ _id: id })
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                msg : "deleted product"
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error : err.message
+            });
+
+        });
+
+
+
 });
 
 
