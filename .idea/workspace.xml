@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0feffd15-d884-4264-b1cf-95413e7afdd2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/orders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/products.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/products.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,7 +63,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573449398973</updated>
-      <workItem from="1573449401143" duration="7192000" />
+      <workItem from="1573449401143" duration="7618000" />
+      <workItem from="1573465398808" duration="14000" />
+      <workItem from="1573483974145" duration="2000" />
+      <workItem from="1573721536416" duration="2241000" />
     </task>
     <servers />
   </component>
@@ -71,7 +78,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
