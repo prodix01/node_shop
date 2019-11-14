@@ -95,10 +95,33 @@ router.post("/", (req, res) => {
 
 
 // 제품 수정하기
-router.patch("/update", (req, res) => {
-    res.json({
-        "msg" : "제품 수정됨"
-    })
+router.patch("/:product_id", (req, res) => {
+
+    const id = req.params.product_id;
+
+    const updateOps = {};
+    for (const ops of req.body) {
+        updateOps[ops.propName] = ops.value;
+    }
+
+
+    productModel
+        .update({ _id : id }, {$set : updateOps})
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                msg : "updated product",
+                productInfo : result
+            });
+        })
+        .catch(err => {
+            console.status(500).json({
+                error : err.message
+            });
+        });
+
+
+
 });
 
 
