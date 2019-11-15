@@ -5,7 +5,7 @@ const orderModel = require("../../models/orders");
 const productModel = require("../../models/products");
 
 
-//주문현황 불러오기
+//장바구니 불러오기
 router.get("/", (req, res) => {
     orderModel
         .find()
@@ -55,7 +55,7 @@ router.get("/:order_id", (req, res) => {
 
 
 
-//주문현황 등록하기
+//장바구니에 등록하기
 router.post("/", (req, res) => {
 
     productModel
@@ -103,10 +103,31 @@ router.post("/", (req, res) => {
 
 
 //주문현황 수정하기
-router.patch("/", (req, res) => {
+router.patch("/:order_id", (req, res) => {
+
+    const id = req.params.order_id;
+
+    const updateOps = {};
+    for (const ops of req.body) {
+        updateOps[ops.propName] = ops.value;
+    }
+
+    orderModel
+        .update({ _id : id }, {$set : updateOps})
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                msg : "update order",
+                orderInfo : result
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error : err.message
+            });
+        });
 
 });
-
 
 
 
