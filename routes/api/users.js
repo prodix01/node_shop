@@ -133,7 +133,7 @@ router.post("/login", (req, res) => {
 
                         res.status(200).json({
                             msg : "successful login",
-                            tokenInfo : token
+                            tokenInfo : "bearer "+token
                         });
                     }
                 })

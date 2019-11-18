@@ -3,10 +3,10 @@ const router = express.Router();
 
 const orderModel = require("../../models/orders");
 const productModel = require("../../models/products");
-
+const checkAuth = require("../../middleware/check_auth");
 
 //장바구니 불러오기
-router.get("/", (req, res) => {
+router.get("/", checkAuth, (req, res) => {
     orderModel
         .find()
         .populate("product", "name price")
@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
 });
 
 //상제 장바구니 제품 불러오기
-router.get("/:order_id", (req, res) => {
+router.get("/:order_id", checkAuth, (req, res) => {
 
     const id = req.params.order_id;
     orderModel
@@ -56,7 +56,7 @@ router.get("/:order_id", (req, res) => {
 
 
 //장바구니에 등록하기
-router.post("/", (req, res) => {
+router.post("/", checkAuth, (req, res) => {
 
     productModel
         .findById(req.body.product)
@@ -104,7 +104,7 @@ router.post("/", (req, res) => {
 
 
 //주문현황 수정하기
-router.patch("/:order_id", (req, res) => {
+router.patch("/:order_id", checkAuth, (req, res) => {
 
     const id = req.params.order_id;
 
@@ -136,7 +136,7 @@ router.patch("/:order_id", (req, res) => {
 
 
 //상세주문현황 삭제하기
-router.delete("/:order_id", (req, res) => {
+router.delete("/:order_id", checkAuth, (req, res) => {
     const id = req.params.order_id;
     orderModel
         .remove({_id : id})

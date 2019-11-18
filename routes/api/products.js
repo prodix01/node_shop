@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const productModel = require("../../models/products");
-
+const checkauth = require("../../middleware/check_auth");
 
 // Data CRUD
 
@@ -43,7 +43,7 @@ router.get("/", (req, res) => {
 
 
 //상세제품 불러오기
-router.get("/:product_id", (req, res) => {
+router.get("/:product_id", checkauth, (req, res) => {
 
     const id = req.params.product_id;
     productModel
@@ -79,7 +79,7 @@ router.get("/:product_id", (req, res) => {
 
 
 // 제품 등록하기
-router.post("/", (req, res) => {
+router.post("/", checkauth, (req, res) => {
 
     const product = new productModel({
         name : req.body.name,
@@ -119,7 +119,7 @@ router.post("/", (req, res) => {
 
 
 // 제품 수정하기
-router.patch("/:product_id", (req, res) => {
+router.patch("/:product_id", checkauth, (req, res) => {
 
     const id = req.params.product_id;
 
@@ -152,7 +152,7 @@ router.patch("/:product_id", (req, res) => {
 
 
 //제품 삭제하기
-router.delete("/:product_id", (req, res) => {
+router.delete("/:product_id", checkauth, (req, res) => {
 
     const id = req.params.product_id;
     productModel
