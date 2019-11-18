@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-
+const jwt = require("jsonwebtoken");
 
 const userModel = require("../../models/users");
 
@@ -124,8 +124,16 @@ router.post("/login", (req, res) => {
                         });
                     }
                     else {
+
+                        const token = jwt.sign({
+                            email : user[0].email,
+                            userId : user[0]._id
+                        },
+                        process.env.JWT_SECRET, { expiresIn : "1h" });
+
                         res.status(200).json({
-                            msg : "successful login"
+                            msg : "successful login",
+                            tokenInfo : token
                         });
                     }
                 })
