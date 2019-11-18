@@ -17,7 +17,19 @@ router.get("/", (req, res) => {
             res.status(200).json({
                 msg : "successful total products",
                 count : docs.length,
-                productInfo : docs
+                productInfo : docs.map(doc => {
+                    return {
+                        name: doc.name,
+                        price: doc.price,
+                        date: doc.createdAt,
+                        req : {
+                            type : "GET",
+                            url : "http://localhost:3000/product/" + doc._id
+                        }
+                    }
+                })
+
+
             });
         })
         .catch(err => {
@@ -42,7 +54,11 @@ router.get("/:product_id", (req, res) => {
             if(doc) {
                 return res.status(200).json({
                     msg : "successful get product",
-                    productInfo : doc
+                    productInfo : doc,
+                    req : {
+                        type : "GET",
+                        url : "http://localhost:3000/product/"
+                    }
                 });
             }
             else {
@@ -76,7 +92,15 @@ router.post("/", (req, res) => {
             console.log(result);
             res.status(200).json({
                 msg : "successful save product",
-                createdProduct : result
+                createdProduct : {
+                    name : result.name,
+                    price : result.price,
+                    date : result.createdAt,
+                    req : {
+                        type : "GET",
+                        url : "http://localhost:3000/product/" + result._id
+                    }
+                }
             })
 
         })
