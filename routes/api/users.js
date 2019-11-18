@@ -103,9 +103,35 @@ router.post("/login", (req, res) => {
 
     //로그인을 위한 정보매칭
     userModel
-        .findOne({email : req.body.email})
+        // 이메일 매칭
+        .find({email : req.body.email})
         .exec()
         .then(user => {
+            //이메일이 없을경우
+            if (user.length < 1) {
+                return res.status(401).json({
+                    msg : "No email"
+                });
+            }
+            //이메일이 있는경우
+            else {
+                //패스워드 매칭
+                bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+                    console.log(result);
+                    if (result === false) {
+                        return res.json({
+                            msg : "password is not matched"
+                        });
+                    }
+                    else {
+                        res.status(200).json({
+                            msg : "successful login"
+                        });
+                    }
+                })
+            }
+
+
 
         })
         .catch(err => {
