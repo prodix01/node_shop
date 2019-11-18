@@ -40,39 +40,60 @@ router.get("/", (req, res) => {
 //회원가입
 router.post("/register", (req, res) => {
 
-    bcrypt.hash(req.body.password, 10, (err, hash) => {
 
-        if (err) {
-            return res.status(500).json({
+    userModel
+        // 사용자 입력 이메일
+        .find({ email : req.body.email })
+        .exec()
+        .then(user => {
+            // 메일이 있을경우
+            if (user.length >= 1) {
+                return res.status(404).json({
+                    msg : "Mail exists"
+                });
+            }
+            else {
+
+                // 메일이 없을경우
+                // 패스워드 암호화
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+
+                    if (err) {
+                        return res.status(500).json({
+                            error : err.message
+                        });
+                    }
+
+                    // db에 저장
+                    const user = new userModel({
+                        email : req.body.email,
+                        password : hash
+                    });
+
+                    user
+                        .save()
+                        .then(result => {
+                            console.log(result);
+                            res.status(200).json({
+                                msg: " successful save userInfo",
+                                createdUser : result
+                            });
+                        })
+                        .catch(err => {
+                            res.status(500).json({
+                                error : err.message
+                            });
+                        });
+
+                });
+
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
                 error : err.message
             });
-        }
-
-        const user = new userModel({
-            email : req.body.email,
-            password : hash
         });
-
-        user
-            .save()
-            .then(result => {
-                console.log(result);
-                res.status(200).json({
-                    msg: " successful save userInfo",
-                    createdUser : result
-                });
-            })
-            .catch(err => {
-                res.status(500).json({
-                    error : err.message
-                });
-            });
-
-    });
-
-
-
-
 
 });
 
@@ -80,7 +101,18 @@ router.post("/register", (req, res) => {
 // 로그인
 router.post("/login", (req, res) => {
 
+    //로그인을 위한 정보매칭
+    userModel
+        .findOne({email : req.body.email})
+        .exec()
+        .then(user => {
 
+        })
+        .catch(err => {
+            res.status(500).json({
+                error : err.message
+            });
+        });
 
 });
 
