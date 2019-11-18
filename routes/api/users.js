@@ -54,28 +54,6 @@ router.post("/", (req, res) => {
     }
 );
 
-// const product = new productModel({
-//     name : req.body.name,
-//     price : req.body.price
-// });
-//
-// product
-//     .save()
-//     .then(result => {
-//         console.log(result);
-//         res.status(200).json({
-//             msg : "successful save product",
-//             createdProduct : result
-//         })
-//
-//     })
-//     .catch(err => {
-//         console.log(err.message);
-//         res.status(500).json({
-//             error : err.message
-//         })
-//     });
-
 
 
 

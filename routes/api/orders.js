@@ -59,21 +59,22 @@ router.get("/:order_id", (req, res) => {
 router.post("/", (req, res) => {
 
     productModel
-        .findById(req.body.productId)
+        .findById(req.body.product)
         .then(product => {
             // 제품아이디 유무 체크
-            if(!product) {
-                return res.status(404).json({
-                    msg : "No product id"
-                });
-            }
-            else {
+            if(product) {
                 const order = new orderModel({
-                    product : req.body.productId,
+                    product : req.body.product,
                     quantity: req.body.quantity
                 });
 
                 return order.save()
+            }
+            else {
+
+                return res.status(404).json({
+                    msg : "No product id"
+                });
             }
         })
         .then(result => {
