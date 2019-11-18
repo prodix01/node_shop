@@ -1,8 +1,16 @@
+
+
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+
+
 const userModel = require("../../models/users");
 
-//나의 정보보기
+
+
+
+//전체 유저 정보보기
 router.get("/", (req, res) => {
 
     userModel
@@ -29,31 +37,52 @@ router.get("/", (req, res) => {
 
 
 
-//나의 정보등록
-router.post("/", (req, res) => {
+//회원가입
+router.post("/register", (req, res) => {
 
-    const user = new userModel({
-        id : req.body.id,
-        password : req.body.password
-    });
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
 
-    user
-        .save()
-        .then(result => {
-            console.log(result);
-            res.status(200).json({
-                msg: " successful save userInfo",
-                createdUser : result
-            });
-        })
-        .catch(err => {
-            res.status(500).json({
+        if (err) {
+            return res.status(500).json({
                 error : err.message
             });
-        });
-    }
-);
+        }
 
+        const user = new userModel({
+            email : req.body.email,
+            password : hash
+        });
+
+        user
+            .save()
+            .then(result => {
+                console.log(result);
+                res.status(200).json({
+                    msg: " successful save userInfo",
+                    createdUser : result
+                });
+            })
+            .catch(err => {
+                res.status(500).json({
+                    error : err.message
+                });
+            });
+
+    });
+
+
+
+
+
+});
+
+
+// 로그인
+router.post("/login", (req, res) => {
+
+
+
+});
 
 
 
