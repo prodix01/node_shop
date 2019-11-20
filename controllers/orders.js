@@ -12,7 +12,18 @@ exports.orders_get_all = (req, res) => {
             res.status(200).json({
                 msg : "successful total orders",
                 count : docs.length,
-                orderList : docs
+                orderList : docs.map(doc => {
+                    return {
+                        id : doc._id,
+                        name : doc.product,
+                        quantity : doc.quantity,
+                        date : doc.createdAt,
+                        req : {
+                            type : "GET",
+                            url : "http://localhost:3000/orders/" + doc._id
+                        }
+                    }
+                })
             });
         })
         .catch(err => {

@@ -14,6 +14,7 @@ exports.products_get_all = (req, res) => {
                 count : docs.length,
                 productInfo : docs.map(doc => {
                     return {
+                        id : doc._id,
                         name: doc.name,
                         price: doc.price,
                         date: doc.createdAt,
@@ -120,7 +121,11 @@ exports.products_patch_product = (req, res) => {
         .then(result => {
             res.status(200).json({
                 msg : "updated product",
-                productInfo : result
+                productInfo : result,
+                req : {
+                    type : "GET",
+                    url : "http:localhost:3000/product/"
+                }
             });
         })
         .catch(err => {
