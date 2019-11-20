@@ -153,12 +153,30 @@ router.post("/login", (req, res) => {
 
 
 //나의 정보수정
-router.patch("/", (req, res) => {
-        res.json({
-            "msg" : "나의 정보수정"
-        })
+router.patch("/:user_id", (req, res) => {
+
+    const id = req.params.user_id;
+
+    const updateOps = {};
+    for (const ops of req.body) {
+        updateOps[ops.propName] = ops.value;
     }
-);
+    userModel
+        .update({ _id : id }, {$set : updateOps})
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                msg : "successful update userInfo",
+                userInfo : result
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error : err.message
+            });
+        });
+
+});
 
 
 
@@ -167,11 +185,23 @@ router.patch("/", (req, res) => {
 
 
 //나의 정보삭제
-router.delete("/", (req, res) => {
-        res.json({
-            "msg" : "나의 정보삭제"
+router.delete("/:user_id", (req, res) => {
+
+    const id = req.params.user_id;
+    userModel
+        .remove({ _id : id })
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                msg : "successful remove userData"
+            })
         })
-    }
-);
+        .catch(err => {
+            res.status(500).json({
+                error : err.message
+            });
+        });
+
+});
 
 module.exports = router;
